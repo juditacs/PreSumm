@@ -207,7 +207,7 @@ def hashhex(s):
 class BertData():
     def __init__(self, args):
         self.args = args
-        self.tokenizer = BertTokenizer.from_pretrained('SZTAKI-HLT/hubert-base-cc', do_lower_case=True)
+        self.tokenizer = BertTokenizer.from_pretrained(os.environ['HUBERT_DIR'], do_lower_case=True)
 
         self.sep_token = '[SEP]'
         self.cls_token = '[CLS]'

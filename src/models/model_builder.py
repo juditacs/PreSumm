@@ -1,4 +1,5 @@
 import copy
+import os
 
 import torch
 import torch.nn as nn
@@ -116,9 +117,9 @@ class Bert(nn.Module):
     def __init__(self, large, temp_dir, finetune=False):
         super(Bert, self).__init__()
         if(large):
-            self.model = BertModel.from_pretrained('SZTAKI-HLT/hubert-base-cc', cache_dir=temp_dir)
+            self.model = BertModel.from_pretrained(os.environ['HUBERT_DIR'], cache_dir=temp_dir)
         else:
-            self.model = BertModel.from_pretrained('SZTAKI-HLT/hubert-base-cc', cache_dir=temp_dir)
+            self.model = BertModel.from_pretrained(os.environ['HUBERT_DIR'], cache_dir=temp_dir)
 
         self.finetune = finetune
 
