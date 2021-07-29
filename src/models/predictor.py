@@ -368,7 +368,7 @@ class Translator(object):
                 alive_seq = predictions.index_select(0, non_finished) \
                     .view(-1, alive_seq.size(-1))
             # Reorder states.
-            select_indices = batch_index.view(-1)
+            select_indices = batch_index.view(-1).long()
             src_features = src_features.index_select(0, select_indices)
             dec_states.map_batch_fn(
                 lambda state, dim: state.index_select(dim, select_indices))
